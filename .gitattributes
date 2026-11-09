@@ -1,1 +1,2 @@
-PENDING_BINARY_OR_TEXT_CONTENT
+* text=auto eol=lf
+*.bat text eol=crlf

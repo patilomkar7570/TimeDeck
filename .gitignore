@@ -1,1 +1,7 @@
-PENDING_BINARY_OR_TEXT_CONTENT
+node_modules/
+dist/
+coverage/
+*.log
+.DS_Store
+.vscode/
+.idea/

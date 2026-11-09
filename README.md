@@ -2,121 +2,111 @@
 
 **Your World, At a Glance.**
 
-[![MIT License](https://img.shields.io/badge/License-MIT-8B7CFF.svg)](LICENSE)
-[![PWA](https://img.shields.io/badge/PWA-installable-6757E8)](https://web.dev/learn/pwa/)
-[![React](https://img.shields.io/badge/React-19-149ECA?logo=react)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Release](https://img.shields.io/github/v/release/patilomkar7570/TimeDeck?display_name=tag)](https://github.com/patilomkar7570/TimeDeck/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-8B7CFF.svg)](LICENSE)
+[![Deploy to GitHub Pages](https://github.com/patilomkar7570/TimeDeck/actions/workflows/pages.yml/badge.svg)](https://github.com/patilomkar7570/TimeDeck/actions/workflows/pages.yml)
 
-**Explore global time with live city clocks, interactive time-zone comparisons, and effortless date and time conversions—all in one beautiful, easy-to-use application.**
+TimeDeck is a premium, local-first world clock and time-zone utility. It brings live clocks, a visual time comparison timeline and daylight-saving-aware conversions into one focused, installable web application.
 
-TimeDeck is a local-first world clock and time-zone utility built as a responsive Progressive Web App. It brings four focused tools together: World Clock, Compare Time, Time Converter and Settings.
+## The four tools
 
-## Explore TimeDeck
-
-- **World Clock** — Search a bundled city catalogue, save cities, mark favourites, organize groups, reorder cards, and choose digital or analog clocks.
-- **Compare Time** — Move along a 24-hour timeline to compare local times, day/night periods and date differences across cities.
-- **Time Converter** — Convert a selected local date and time across multiple destinations, with explicit handling for daylight-saving gaps and overlaps.
-- **Settings** — Follow system appearance automatically or choose dark/light mode, customize accent colours and clock preferences, and export or import local configuration.
+- **World Clock** — Save cities, mark favourites, organize groups, reorder cards and switch between digital and analog clocks.
+- **Compare Time** — Move across a 24-hour timeline and see the corresponding local time, date and day/night period in every selected city.
+- **Time Converter** — Convert a chosen date and local time to multiple destinations. Ambiguous and nonexistent daylight-saving times are surfaced for the user to resolve.
+- **Settings** — Automatic, dark and light themes; accent colours; clock format and style; local configuration import/export; PWA installation guidance.
 
 ## Highlights
 
-- Search by city, country or IANA time-zone identifier using bundled `@vvo/tzdb` data.
-- Calculate time dynamically with IANA zones, `Intl.DateTimeFormat` and the Temporal polyfill—not hard-coded UTC offsets.
-- Responsive desktop, tablet and mobile layouts.
-- Installable PWA with a cached offline application shell after the first successful load.
-- Theme-aware custom tooltips, menus and city picker.
-- Local-first storage: saved cities, groups and preferences remain in the current browser profile.
-- No accounts, cloud backend, ads, mandatory telemetry or external time API.
+- Search cities, countries and IANA timezone identifiers from the bundled `@vvo/tzdb` catalogue.
+- Calculate live local times and UTC offsets dynamically using IANA time zones, `Intl.DateTimeFormat` and the Temporal polyfill.
+- Follow the operating-system appearance automatically, or choose a manual theme.
+- Use custom, theme-aware tooltips and dropdowns instead of browser-native white hover boxes.
+- Install as a Progressive Web App on supported browsers and use the cached application shell offline after the first successful load.
+- Keep saved cities and preferences on the device. No account, cloud backend, advertisements or telemetry.
 
-## Use TimeDeck
+## Two Windows launch options
 
-**Website:** [https://patilomkar7570.github.io/TimeDeck/](https://patilomkar7570.github.io/TimeDeck/)
+After the GitHub Pages deployment is live, the two primary launch files open the same hosted TimeDeck PWA in different presentations. They use the same Brave profile and therefore share the same saved cities and settings:
 
-When GitHub Pages is enabled and its deployment workflow has completed, open the website in a supported browser. You can also install the PWA from the browser's install option for an app-style window.
+| File | Opens as | Use it when |
+|---|---|---|
+| `Start-TimeDeck-Web.bat` | A normal Brave tab with address bar and tabs | You want the regular website experience. |
+| `Start-TimeDeck-App.bat` | A clean, standalone Brave app window (`--app` mode) | You want TimeDeck to feel like its own desktop application. |
 
-### Windows launch shortcuts
+For local development, use `Start-TimeDeck-Web-Local.bat` or `Start-TimeDeck-App-Local.bat`. They start Vite on `http://127.0.0.1:5173/`; the first local launch installs npm dependencies and needs internet access. `run.bat` remains a compatibility shortcut for local web mode. Local launchers need Node.js 20.19+ and npm.
 
-The repository includes two optional Brave launchers:
+The standalone Brave launcher is an app-style browser window, not an Electron executable or Windows installer. For a fully installed PWA shortcut, open the hosted site in Brave and use **Install TimeDeck** / **Create shortcut** from the browser menu where available. The installed PWA can then launch directly from the Windows Start Menu.
 
-| File | Behaviour |
-|---|---|
-| `Start-TimeDeck-Web.bat` | Opens the hosted site in a normal Brave tab. |
-| `Start-TimeDeck-App.bat` | Opens the same hosted site in a standalone Brave app window. |
-| `Start-TimeDeck-Web-Local.bat` | Starts the local Vite server and opens a normal Brave tab. |
-| `Start-TimeDeck-App-Local.bat` | Starts the local Vite server and opens a standalone Brave app window. |
+## Publish to GitHub
 
-The hosted shortcuts require the GitHub Pages URL to be deployed first. The standalone Brave window is an app-style browser window, not a separate Electron executable. Both hosted launchers use the same Brave profile and therefore share browser storage.
+The repository publishing helper targets the existing `patilomkar7570/TimeDeck` repository. It commits the source, pushes the `main` branch and `v1.0.0` tag, then creates the GitHub release using `RELEASE_NOTES.md`. The project is MIT-licensed; confirm the existing repository history and remote before running the helper. This is the first stable release, `v1.0.0`.
 
-### Run locally
-
-Requirements: Node.js 20.19+ and npm.
+One-time prerequisites: install [Git](https://git-scm.com/downloads), install [GitHub CLI](https://cli.github.com/), then authenticate with:
 
 ```powershell
+gh auth login
+```
+
+After extracting the project, double-click `Publish-TimeDeck-GitHub.bat`. Or run `scripts/publish-github.ps1` from PowerShell. Review the target repository and visibility before confirming the GitHub CLI prompts. The Pages workflow then builds and deploys the site to `https://patilomkar7570.github.io/TimeDeck/`; wait for the **Deploy TimeDeck to GitHub Pages** workflow to complete before using the hosted launch files.
+
+## Run manually
+
+Requirements: Node.js 20.19+ (or a compatible newer LTS release) and npm.
+
+```bash
 npm install
 npm run dev
 ```
 
-Open `http://127.0.0.1:5173/`.
+Open `http://127.0.0.1:5173/`. To run the checks and create a production build:
 
-Run checks and create a production build:
-
-```powershell
+```bash
 npm run typecheck
 npm test
 npm run build
 npm run preview
 ```
 
-The production output is written to `dist/`.
+The production build is written to `dist/`. Publish that directory to any static HTTPS host; no server-side runtime is required. GitHub Pages deployment is configured in `.github/workflows/pages.yml`.
 
-## Publish with GitHub Pages
+## Time and timezone correctness
 
-The repository includes `.github/workflows/pages.yml`, which builds the PWA and deploys the `dist/` directory to GitHub Pages.
+The device's system clock supplies the current timestamp. A city's IANA timezone identifier—not a fixed offset—is the source for its local clock and offset. Temporal is used to distinguish daylight-saving overlaps (a local time occurs twice) from gaps (a local time does not exist). Time zone rules are supplied by the browser/runtime, and the searchable city metadata is bundled with the app. Keep the browser updated for current timezone database rules. An inaccurate operating-system clock can produce inaccurate results.
 
-1. In the repository, open **Settings → Pages**.
-2. Set the build and deployment source to **GitHub Actions**.
-3. Ensure Actions are permitted to write the Pages deployment artifact (the workflow declares the required permissions).
-4. Push to `main` or run the workflow manually from **Actions**.
-5. Once the workflow succeeds, open the website link above.
+## Privacy and storage
 
-## Time-zone accuracy
-
-The computer's system clock is the source of the current timestamp. Each city's IANA time-zone identifier supplies the rules used to calculate its local date, time and UTC offset. Temporal helps identify local times that are ambiguous or nonexistent during daylight-saving transitions.
-
-Time-zone rules are provided by the browser/runtime. Keep the browser updated for current timezone database rules. An inaccurate operating-system clock can produce inaccurate displayed times.
-
-## Privacy and data
-
-TimeDeck stores saved cities, groups and preferences locally in the current browser profile. Data does not sync between browsers or devices automatically. Export a JSON backup from Settings before clearing browser data or moving to another device.
+Saved cities, groups and preferences are stored in the current browser profile's `localStorage` under the `timedeck:v2` key. Data is scoped to the browser origin/profile; the Brave web-tab and Brave app-window launchers share the same profile and local data. Export a JSON backup before clearing browser data or moving to another browser/device.
 
 ## Project structure
 
 ```text
 .
-├── .github/              # CI, Pages deployment and issue templates
-├── public/               # PWA manifest, icons and static assets
-├── scripts/              # Service worker and Windows launch scripts
+├── .github/
+│   ├── ISSUE_TEMPLATE/
+│   └── workflows/
+├── public/                 # PWA manifest and icons
+├── scripts/                # Service-worker generator and Windows launcher
 ├── src/
-│   ├── components/       # World Clock, Compare, Converter and Settings
-│   ├── lib/              # Time-zone, city catalogue and storage logic
+│   ├── components/         # Four screens and reusable UI components
+│   ├── lib/                # City catalogue, storage and timezone logic
 │   ├── styles/
 │   └── types/
 ├── tests/
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── LICENSE
-├── RELEASE_NOTES.md
-└── SECURITY.md
+├── SECURITY.md
+└── package.json
 ```
 
 ## Contributing
 
-Focused bug reports, accessibility feedback and improvements are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) and keep the product centred on its four core tools.
+Bug reports, accessibility feedback and focused improvements are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Please keep TimeDeck focused on World Clock, Compare Time, Time Converter and Settings.
 
 ## Security
 
-Please see [SECURITY.md](SECURITY.md) for responsible vulnerability disclosure.
+Please see [SECURITY.md](SECURITY.md) for responsible disclosure guidance.
 
 ## License
 
-TimeDeck is released under the [MIT License](LICENSE).
+TimeDeck is released under the MIT License. See [LICENSE](LICENSE).

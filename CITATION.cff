@@ -1,1 +1,12 @@
-PENDING_BINARY_OR_TEXT_CONTENT
+cff-version: 1.2.0
+message: "If you use TimeDeck, please cite this software release."
+title: "TimeDeck"
+version: "1.0.0"
+date-released: "2026-11-10"
+type: software
+license: MIT
+repository-code: "https://github.com/patilomkar7570/TimeDeck"
+abstract: "A local-first, installable world clock, time comparison and time converter web application."
+authors:
+  - family-names: "Patil"
+    given-names: "Omkar"

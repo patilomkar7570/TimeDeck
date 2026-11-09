@@ -1,1 +1,42 @@
-PENDING_BINARY_OR_TEXT_CONTENT
+{
+  "name": "timedeck",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TimeDeck \u2014 Your World, At a Glance. A local-first world clock and time-zone PWA.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "typecheck": "tsc --noEmit -p tsconfig.app.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "npm run typecheck && vite build && node scripts/generate-sw.mjs",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@js-temporal/polyfill": "^0.5.1",
+    "@vvo/tzdb": "^6.204.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.3",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7",
+    "vitest": "^2.1.8"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "homepage": "https://patilomkar7570.github.io/TimeDeck/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/patilomkar7570/TimeDeck.git"
+  },
+  "bugs": {
+    "url": "https://github.com/patilomkar7570/TimeDeck/issues"
+  }
+}
